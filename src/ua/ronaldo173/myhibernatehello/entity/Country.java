@@ -1,32 +1,63 @@
 package ua.ronaldo173.myhibernatehello.entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Country")
+@Table(name = "COUNTRY")
 public class Country {
 
 	@Id
-	@Column(name = "country_name")
+	@GeneratedValue
+	@Column(name = "Country_id")
+	private int countryId;
+
+	@Column(name = "Country_name")
 	private String countryName;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "country_state", joinColumns = { @JoinColumn(name = "country_name") }, inverseJoinColumns = {
-			@JoinColumn(name = "state_name") })
-	Collection<State> listStates = new ArrayList<>();
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "COUNTRY_LANGUAGE", joinColumns = { @JoinColumn(name = "Country_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "Language_id") })
+	List<Language> listLanguages = new ArrayList<>();
 
-	@Column(name = "country_population")
-	long countryPopulation;
+	/**
+	 * 
+	 */
+	public Country() {
+		super();
+	}
+
+	/**
+	 * @param countryName
+	 */
+	public Country(String countryName) {
+		this.countryName = countryName;
+	}
+
+	/**
+	 * @return the countryId
+	 */
+	public int getCountryId() {
+		return countryId;
+	}
+
+	/**
+	 * @param countryId
+	 *            the countryId to set
+	 */
+	public void setCountryId(int countryId) {
+		this.countryId = countryId;
+	}
 
 	/**
 	 * @return the countryName
@@ -44,61 +75,18 @@ public class Country {
 	}
 
 	/**
-	 * @return the listStates
+	 * @return the listLanguages
 	 */
-	public Collection<State> getListStates() {
-		return listStates;
+	public List<Language> getListLanguages() {
+		return listLanguages;
 	}
 
 	/**
-	 * @param listStates
-	 *            the listStates to set
+	 * @param listLanguages
+	 *            the listLanguages to set
 	 */
-	public void setListStates(Collection<State> listStates) {
-		this.listStates = listStates;
-	}
-
-	/**
-	 * @return the countryPopulation
-	 */
-	public long getCountryPopulation() {
-		return countryPopulation;
-	}
-
-	/**
-	 * @param countryPopulation
-	 *            the countryPopulation to set
-	 */
-	public void setCountryPopulation(long countryPopulation) {
-		this.countryPopulation = countryPopulation;
-	}
-
-	/**
-	 * 
-	 */
-	public Country() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param countryName
-	 * @param countryPopulation
-	 */
-	public Country(String countryName, long countryPopulation) {
-		this.countryName = countryName;
-		this.countryPopulation = countryPopulation;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Country [countryName=" + countryName + ", listStates=" + listStates + ", countryPopulation="
-				+ countryPopulation + "]";
+	public void setListLanguages(List<Language> listLanguages) {
+		this.listLanguages = listLanguages;
 	}
 
 }

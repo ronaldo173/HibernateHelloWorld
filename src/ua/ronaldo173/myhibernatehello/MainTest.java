@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import ua.ronaldo173.myhibernatehello.entity.Country;
-import ua.ronaldo173.myhibernatehello.entity.State;
+import ua.ronaldo173.myhibernatehello.entity.Language;
 
 /**
  * Here i run application and see what will happen(:)) with hibernate.
@@ -26,12 +26,15 @@ public class MainTest {
 		/**
 		 * create beans.
 		 */
-		Country countryChina = new Country("China", 2 * 10 ^ 9);
-		State statePekin = new State("Pekin", 12 * 10 ^ 6);
-		State stateTyangin = new State("Tyangin", 4 * 10 ^ 6);
+		Country countryChina = new Country("China");
 
-		countryChina.getListStates().add(statePekin);
-		countryChina.getListStates().add(stateTyangin);
+		Language englLang = new Language("english");
+		englLang.getCountries().add(countryChina);
+		Language mandarinLang = new Language("mandarin");
+		mandarinLang.getCountries().add(countryChina);
+
+		countryChina.getListLanguages().add(englLang);
+		countryChina.getListLanguages().add(mandarinLang);
 
 		session.beginTransaction();
 		session.save(countryChina);

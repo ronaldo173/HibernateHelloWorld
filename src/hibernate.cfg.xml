@@ -28,7 +28,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="ua.ronaldo173.myhibernatehello.entity.Country"></mapping>
-		<mapping class="ua.ronaldo173.myhibernatehello.entity.State"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.Language"></mapping>
 
 
 	</session-factory>
