@@ -22,6 +22,9 @@ public class MainTest {
 		student2.setDescription("old student");
 
 		Session session;
+		/**
+		 * Or use openSession for thread safe environment.
+		 */
 		// = factory.openSession();
 		session = factory.getCurrentSession();
 		session.beginTransaction();
