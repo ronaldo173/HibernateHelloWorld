@@ -19,7 +19,7 @@
 		<property name="connection.pool_size">1</property>
 
 		<!-- SQL dialect -->
-		<property name="dialect">org.hibernate.dialect.SQLServer2005Dialect</property>
+		<property name="dialect"> org.hibernate.dialect.MySQLDialect</property>
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
@@ -28,7 +28,7 @@
 		<property name="hbm2ddl.auto">create</property>
 
 		<mapping class="ua.ronaldo173.myhibernatehello.entity.Country"></mapping>
-		<mapping class="ua.ronaldo173.myhibernatehello.entity.Capital"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.State"></mapping>
 
 
 	</session-factory>

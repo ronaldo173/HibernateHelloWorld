@@ -1,23 +1,29 @@
 package ua.ronaldo173.myhibernatehello.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Countries")
+@Table(name = "Country")
 public class Country {
 
 	@Id
 	@Column(name = "country_name")
-	String countryName;
+	private String countryName;
 
-	@OneToOne
-	@JoinColumn(name = "capital_name")
-	Capital capital;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "country_state", joinColumns = { @JoinColumn(name = "country_name") }, inverseJoinColumns = {
+			@JoinColumn(name = "state_name") })
+	Collection<State> listStates = new ArrayList<>();
 
 	@Column(name = "country_population")
 	long countryPopulation;
@@ -38,18 +44,18 @@ public class Country {
 	}
 
 	/**
-	 * @return the capital
+	 * @return the listStates
 	 */
-	public Capital getCapital() {
-		return capital;
+	public Collection<State> getListStates() {
+		return listStates;
 	}
 
 	/**
-	 * @param capital
-	 *            the capital to set
+	 * @param listStates
+	 *            the listStates to set
 	 */
-	public void setCapital(Capital capital) {
-		this.capital = capital;
+	public void setListStates(Collection<State> listStates) {
+		this.listStates = listStates;
 	}
 
 	/**
@@ -82,6 +88,17 @@ public class Country {
 	public Country(String countryName, long countryPopulation) {
 		this.countryName = countryName;
 		this.countryPopulation = countryPopulation;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Country [countryName=" + countryName + ", listStates=" + listStates + ", countryPopulation="
+				+ countryPopulation + "]";
 	}
 
 }

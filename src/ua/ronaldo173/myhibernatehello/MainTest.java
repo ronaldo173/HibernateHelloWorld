@@ -4,8 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import ua.ronaldo173.myhibernatehello.entity.Capital;
 import ua.ronaldo173.myhibernatehello.entity.Country;
+import ua.ronaldo173.myhibernatehello.entity.State;
 
 /**
  * Here i run application and see what will happen(:)) with hibernate.
@@ -23,14 +23,18 @@ public class MainTest {
 		Session session;
 		session = factory.getCurrentSession();
 
-		Country ukraineCountry = new Country("Ukraine", 50000000);
-		Capital ukrCapital = new Capital("Kiev", 3000000);
-		ukraineCountry.setCapital(ukrCapital);
+		/**
+		 * create beans.
+		 */
+		Country countryChina = new Country("China", 2 * 10 ^ 9);
+		State statePekin = new State("Pekin", 12 * 10 ^ 6);
+		State stateTyangin = new State("Tyangin", 4 * 10 ^ 6);
+
+		countryChina.getListStates().add(statePekin);
+		countryChina.getListStates().add(stateTyangin);
 
 		session.beginTransaction();
-		session.save(ukraineCountry);
-		session.save(ukrCapital);
-
+		session.save(countryChina);
 		session.getTransaction().commit();
 	}
 
