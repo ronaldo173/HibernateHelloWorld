@@ -27,7 +27,8 @@
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
 
-		<mapping class="ua.ronaldo173.myhibernatehello.entity.Student"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.Country"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.Capital"></mapping>
 
 
 	</session-factory>

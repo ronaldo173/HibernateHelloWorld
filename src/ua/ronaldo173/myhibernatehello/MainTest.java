@@ -4,8 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import ua.ronaldo173.myhibernatehello.entity.Student;
+import ua.ronaldo173.myhibernatehello.entity.Capital;
+import ua.ronaldo173.myhibernatehello.entity.Country;
 
+/**
+ * Here i run application and see what will happen(:)) with hibernate.
+ * 
+ * @author Alexandr Efimov
+ *
+ */
 public class MainTest {
 	public static void main(String[] args) {
 		Configuration configuration = new Configuration();
@@ -13,26 +20,18 @@ public class MainTest {
 
 		SessionFactory factory = configuration.buildSessionFactory();
 
-		Student student = new Student();
-		student.setName("Pendergast");
-		student.setDescription("new student");
-		Student student2 = new Student();
-		student2.setId(2);
-		student2.setName("Alina");
-		student2.setDescription("old student");
-
 		Session session;
-		/**
-		 * Or use openSession for thread safe environment.
-		 */
-		// = factory.openSession();
 		session = factory.getCurrentSession();
+
+		Country ukraineCountry = new Country("Ukraine", 50000000);
+		Capital ukrCapital = new Capital("Kiev", 3000000);
+		ukraineCountry.setCapital(ukrCapital);
+
 		session.beginTransaction();
-		session.save(student);
-		session.save(student2);
+		session.save(ukraineCountry);
+		session.save(ukrCapital);
 
 		session.getTransaction().commit();
-		// session.close();
 	}
 
 }
