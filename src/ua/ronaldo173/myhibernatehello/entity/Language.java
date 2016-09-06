@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +21,7 @@ public class Language {
 	@Column(name = "Language_name")
 	private String languageName;
 
+	@ManyToMany(mappedBy = "listLanguages")
 	private List<Country> countries = new ArrayList<>();
 
 	/**
