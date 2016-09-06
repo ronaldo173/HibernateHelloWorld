@@ -8,7 +8,7 @@
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/geronimo-jta_1.1_spec-1.1.1.jar"/>
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/hibernate-commons-annotations-5.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/hibernate-core-5.1.0.Final.jar" sourcepath="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/documentation/javadocs/org/hibernate"/>
-	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/documentation/javadocs/org/hibernate"/>
+	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/hibernate-jpa-2.1-api-1.0.0.Final.jar" sourcepath="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/project/build/classes/production/hibernate-jpamodelgen/org/hibernate/jpamodelgen/xml/jaxb"/>
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/jandex-2.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/javassist-3.20.0-GA.jar"/>
 	<classpathentry kind="lib" path="E:/Alexandr/Others/others/hibernate-release-5.1.0.Final/lib/required/jboss-logging-3.3.0.Final.jar"/>
