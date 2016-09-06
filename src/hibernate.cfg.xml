@@ -27,9 +27,11 @@
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
 
-		<mapping class="ua.ronaldo173.myhibernatehello.inheritance.Shape"></mapping>
-		<mapping class="ua.ronaldo173.myhibernatehello.inheritance.Rectangle"></mapping>
-		<mapping class="ua.ronaldo173.myhibernatehello.inheritance.Circle"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Shape"></mapping>
+		<mapping
+			class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Rectangle"></mapping>
+		<mapping
+			class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Circle"></mapping>
 
 
 	</session-factory>
