@@ -25,13 +25,11 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">create</property>
+		 <property name="hbm2ddl.auto">create</property>
+		
 
-		<mapping class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Shape"></mapping>
-		<mapping
-			class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Rectangle"></mapping>
-		<mapping
-			class="ua.ronaldo173.myhibernatehello.inheritancepersubclass.Circle"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.User"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.entity.IpAdress"></mapping>
 
 
 	</session-factory>
