@@ -1,16 +1,23 @@
 package ua.ronaldo173.myhibernatehello.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "USERS")
@@ -22,9 +29,50 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String address;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@Fetch(FetchMode.SELECT)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@JoinTable(name = "USER_ADRESS", joinColumns = @JoinColumn(name = "user_id"))
+	private Collection<Address> addresses = new ArrayList<>();
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", addresses=" + addresses + ", ipAdressesList=" + ipAdressesList + "]";
+	}
+
+	/**
+	 * @return the addresses
+	 */
+	public Collection<Address> getAddresses() {
+		return addresses;
+	}
+
+	/**
+	 * @param addresses
+	 *            the addresses to set
+	 */
+	public void setAddresses(Collection<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 */
+	public User(String firstName, String lastName, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "USERS_IP_ADDRESS")
 	private List<IpAdress> ipAdressesList = new ArrayList<>();
 
@@ -104,49 +152,10 @@ public class User {
 	}
 
 	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
-
-	/**
-	 * @param address
-	 *            the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	/**
 	 * 
 	 */
 	public User() {
 		super();
-	}
-
-	/**
-	 * @param firstName
-	 * @param lastName
-	 * @param email
-	 * @param address
-	 */
-	public User(String firstName, String lastName, String email, String address) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.address = address;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", address=" + address + ", ipAdressesList=" + ipAdressesList + "]";
 	}
 
 }
