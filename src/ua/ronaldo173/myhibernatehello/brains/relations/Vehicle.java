@@ -5,13 +5,10 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Vehicle {
@@ -20,8 +17,7 @@ public class Vehicle {
 	private int id;
 	private String vehicleName;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(joinColumns = @JoinColumn(name = "VEHICLE_ID"), inverseJoinColumns = @JoinColumn(name = "WHEEL_ID"))
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Wheel> wheelsSet = new HashSet<>();
 
 	/**

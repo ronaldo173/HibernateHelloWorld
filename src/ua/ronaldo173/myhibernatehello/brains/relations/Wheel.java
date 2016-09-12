@@ -1,10 +1,13 @@
 package ua.ronaldo173.myhibernatehello.brains.relations;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Wheel {
@@ -12,25 +15,22 @@ public class Wheel {
 	@GeneratedValue
 	private int id;
 
-	/**
-	 * Owner.
-	 */
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Vehicle vehicle;
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "wheelsSet")
+	private Collection<Vehicle> vehicles = new HashSet<>();
 
 	/**
-	 * @return the vehicle
+	 * @return the vehicles
 	 */
-	public Vehicle getVehicle() {
-		return vehicle;
+	public Collection<Vehicle> getVehicles() {
+		return vehicles;
 	}
 
 	/**
-	 * @param vehicle
-	 *            the vehicle to set
+	 * @param vehicles
+	 *            the vehicles to set
 	 */
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setVehicles(Collection<Vehicle> vehicles) {
+		this.vehicles = vehicles;
 	}
 
 	private String name;
@@ -91,7 +91,7 @@ public class Wheel {
 	 */
 	@Override
 	public String toString() {
-		return "Wheel [id=" + id + ", name=" + name + "]";
+		return "Wheel [name=" + name + "]";
 	}
 
 }

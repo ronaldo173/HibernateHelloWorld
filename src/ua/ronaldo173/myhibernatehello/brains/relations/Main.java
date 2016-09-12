@@ -25,9 +25,7 @@ public class Main {
 		configuration.configure();
 
 		try (SessionFactory factory = configuration.buildSessionFactory()) {
-
 			Session session = factory.getCurrentSession();
-
 			session.beginTransaction();
 
 			// Vehicle car = new Vehicle("Car");
@@ -35,13 +33,21 @@ public class Main {
 			//
 			// car.getWheelsSet().addAll(wheels);
 			//
-			// wheels.get(0).setVehicle(car);
+			// Wheel wheel = wheels.get(0);
+			// moto.getWheelsSet().add(wheel);
+			// wheel.getVehicles().add(moto);
+			// wheel.getVehicles().add(car);
 			//
 			// session.save(car);
 			// session.save(moto);
+			//
+			// Vehicle vehicle = session.get(Vehicle.class, 1);
+			// System.out.println(vehicle);
 
-			Vehicle vehicle = session.get(Vehicle.class, 1);
-			System.out.println(vehicle);
+			List<Vehicle> list = session.createCriteria(Vehicle.class).list();
+			for (Vehicle vehicle : list) {
+				System.out.println(vehicle);
+			}
 			session.getTransaction().commit();
 		}
 	}

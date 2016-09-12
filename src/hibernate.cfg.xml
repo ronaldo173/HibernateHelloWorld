@@ -25,11 +25,12 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 
 
-		<mapping class="ua.ronaldo173.myhibernatehello.brains.relations.Wheel"></mapping>
-		<mapping class="ua.ronaldo173.myhibernatehello.brains.relations.Vehicle"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.brains.inheritance.FourWheeler"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.brains.inheritance.TwoWheeler"></mapping>
+		<mapping class="ua.ronaldo173.myhibernatehello.brains.inheritance.Vehicle"></mapping>
 
 
 	</session-factory>
